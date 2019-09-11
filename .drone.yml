@@ -1,6 +1,8 @@
 pipeline:
-image: ubuntu
-script:
- - apt-get update -y
- - apt-get install net-tools -y
- - netstat -tunlp   
+  mynewtask:
+    image: redis
+    commands:
+      - env
+      - echo "ram"
+    when:
+      event: push
