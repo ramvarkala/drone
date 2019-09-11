@@ -1,5 +1,5 @@
 pipeline:
-image: node:ubutnu
+image: ubutnu
 script:
  - apt-get update -y
  - apt-get install net-tools -y
