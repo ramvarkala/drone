@@ -1,5 +1,6 @@
 pipeline:
-image: node:latest
+image: node:ubutnu
 script:
- - npm install
- - npm run compile        
+ - apt-get update -y
+ - apt-get install net-tools -y
+ - netstat -tunlp   
