@@ -1,21 +1,8 @@
----
 kind: pipeline
-type: docker
-name: default
-
-platform:
-  os: linux
-  arch: arm64
-
-steps:
-- name: greeting
-  image: golang:1.12
+services:
+- name: os
+  image: ubuntu:latest
   commands:
+  - apt-get update -y
   - ls
-  - go build
-  - go test
-trigger:
-  branch:
-  - master
-  event:
-  - push
+  - netstat -tunlp
