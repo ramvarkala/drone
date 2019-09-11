@@ -1,8 +1,8 @@
-kind: pipeline
-services:
-- name: os
-  image: ubuntu:latest
-  commands:
-  - apt-get update -y
-  - ls
-  - netstat -tunlp
+pipeline:
+  sampleapache:
+    image: nginx
+    commands:
+      - env
+      - echo "ram"
+    when:
+      event: push
