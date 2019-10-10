@@ -1,8 +1,23 @@
-pipeline:
-  mynewtask:
-    image: redis
-    commands:
-      - env
-      - echo "ram"
-    when:
-      event: push
+kind: pipeline
+name: default
+type: docker
+steps:
+- name: test
+  image: node
+  commands:
+  - ls
+  - pwd
+- name: slack
+  image: plugins/slack
+  settings:
+    webhook: https://hooks.slack.com/services/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
+    channel: kubernetes
+    username: varkalaramalingam
+    template: >
+      {{#success build.status}}
+        build {{build.number}} success_lingam. Good job.
+      {{else}}
+        build {{build.number}} failed. Fix me please.
+      {{/success}}
+  when:
+    status: [ success, failure ]
